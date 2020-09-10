@@ -1,6 +1,14 @@
 package com.emusicstore.model;
 
-public class Product {
+
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Entity
+@Table(name="product")
+public class Product implements Serializable {
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long productId;
 	private String productName;
 	private String productCategory;

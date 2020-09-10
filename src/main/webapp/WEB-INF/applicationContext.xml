@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="org.postgresql.Driver"/>
+        <property name="url" value="jdbc:postgresql://127.0.0.1:5432/Emusic"/>
+        <property name="username" value="postgres"/>
+        <property name="password" value="post1234"/>
+    </bean>
+    <bean id="persistenceExceptionTranslationPostProcessor"
+          class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
+    <bean id="beanFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="packagesToScan">
+            <list>
+                <value>com.emusicstore</value>
+            </list>
+        </property>
+        <property name="jpaProperties">
+            <props>
+                <prop key="spring.jpa.database-platform">org.hibernate.dialect.PostgreSQL95Dialect</prop>
+                <prop key="spring.jpa.hibernate.ddl-auto">create-drop</prop>
+                <prop key="hibernate.show_sql">true</prop>
+                <prop key="hibernate.format_sql">true</prop>
+                <prop key="spring.jpa.generate-ddl">true</prop>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="spring.jpa.database">POSTGRESQL</prop>
+                <prop key="spring.jpa.show-sql">true</prop>
+                <prop key="spring.datasource.platform">postgres</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL95Dialect</prop>
+                <prop key="spring.jpa.properties.hibernate.jdbc.lob.non_contextual_creation">true</prop>
+            </props>
+        </property>
+        <property name="persistenceProvider" ref="persistenceProviderClass"/>
+    </bean>
+    <bean name="persistenceProviderClass" class="org.hibernate.jpa.HibernatePersistenceProvider"/>
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="beanFactory"/>
+    </bean>
+</beans>
