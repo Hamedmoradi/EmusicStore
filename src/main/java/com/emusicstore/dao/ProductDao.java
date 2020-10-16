@@ -8,7 +8,7 @@ public interface ProductDao {
 
 void addProduct(Product product);
 
-void deleteProduct(Product product);
+void deleteProduct(Long product);
 
 Product getProductById(Long id);
 

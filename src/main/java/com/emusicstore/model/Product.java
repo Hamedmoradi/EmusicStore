@@ -1,6 +1,8 @@
 package com.emusicstore.model;
 
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
@@ -18,11 +20,11 @@ public class Product implements Serializable {
 	private String productStatus;
 	private int unitInStock;
 	private String productManufacturer;
+	@Transient
+	private MultipartFile productImage;
 
 	
-public String getProductName() {
-	return productName;
-}
+public String getProductName() { return productName; }
 
 public Long getProductId() {
 	return productId;
@@ -44,9 +46,7 @@ public void setProductCategory(String productCategory) {
 	this.productCategory = productCategory;
 }
 
-public String getProductDescription() {
-	return productDescription;
-}
+public String getProductDescription() { return productDescription; }
 
 public void setProductDescription(String productDescription) {
 	this.productDescription = productDescription;
@@ -76,9 +76,7 @@ public void setProductStatus(String productStatus) {
 	this.productStatus = productStatus;
 }
 
-public int getUnitInStock() {
-	return unitInStock;
-}
+public int getUnitInStock() { return unitInStock; }
 
 public void setUnitInStock(int unitInStock) {
 	this.unitInStock = unitInStock;
@@ -91,4 +89,8 @@ public String getProductManufacturer() {
 public void setProductManufacturer(String productManufacturer) {
 	this.productManufacturer = productManufacturer;
 }
+
+public MultipartFile getProductImage() { return productImage; }
+
+public void setProductImage(MultipartFile productImage) { this.productImage = productImage; }
 }

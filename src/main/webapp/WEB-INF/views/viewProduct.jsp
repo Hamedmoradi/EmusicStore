@@ -19,7 +19,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-5">
-                    <img src="#" alt="image" style="width:100% ;height:300px"/>
+                    <img src="<c:url value="/resources/images/${product.productId}.png"/>" alt="image"
+                         style="width:100% ;height:300px ">
                 </div>
                 <div class="col-lg-5">
                     <h3><img src="#" alt="image"></h3>

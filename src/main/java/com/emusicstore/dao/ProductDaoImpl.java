@@ -20,9 +20,8 @@ public void addProduct(Product product) {
 	entityManager.flush();
 }
 
-public void deleteProduct(Product product) {
-	product = entityManager.merge(product);
-	entityManager.remove(product);
+public void deleteProduct(Long productId) {
+	entityManager.remove(getProductById(productId));
 }
 
 public Product getProductById(Long id) {

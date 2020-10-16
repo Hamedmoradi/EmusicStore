@@ -31,18 +31,22 @@
             </thead>
             <c:forEach items="${products}" var="product">
                 <tr>
-                    <td><img src="#" alt="image"></td>
+                    <td><img src="<c:url value="/resources/images/${product.productId}.png"/>" alt="image"
+                    style="width:100% "></td>
                     <td>${product.productName}</td>
                     <td>${product.productCategory}</td>
                     <td>${product.productCondition}</td>
                     <td>${product.productPrice}</td>
                     <td><a href="<spring:url value="/productList/viewProduct/${product.productId}"/>">
-                        <span class="glyphicon-info-sign"></span></a></td>
-
+                        <span class="glyphicon-info-sign "></span></a>
+                        <a href="<spring:url value="/admin/productInventory/deleteProduct/${product.productId}"/>">
+                        <span class="glyphicon-remove"></span></a></td>
+                    class="btn btn-primary
                 </tr>
             </c:forEach>
         </table>
 
-        <a href="<c:url value="/admin/productInventory/addProduct"/>" class="btn btn-primary">Add Product</a>
+        <a href="<c:url value="/admin/productInventory/addProduct"/>"
+           class="btn btn-primary flex-grow-1 flex-lg-grow-0">Add Product</a>
 
 <%@include file="/WEB-INF/views/template/footer.jsp" %>
