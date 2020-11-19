@@ -20,6 +20,11 @@ public void addProduct(Product product) {
 	entityManager.flush();
 }
 
+@Override
+public void editProduct(Product product) {
+entityManager.merge(product);
+}
+
 public void deleteProduct(Long productId) {
 	entityManager.remove(getProductById(productId));
 }
@@ -31,6 +36,6 @@ public Product getProductById(Long id) {
 
 public List<Product> getAllProducts() {
 	Query query = entityManager.createQuery("from Product ");
-	return (List<Product>) query.getResultList();
+	return  query.getResultList();
 }
 }

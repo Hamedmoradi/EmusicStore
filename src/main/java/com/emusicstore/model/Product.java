@@ -1,9 +1,12 @@
 package com.emusicstore.model;
 
 
+import net.bytebuddy.implementation.bind.annotation.Empty;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotEmpty;
 import java.io.Serializable;
 
 @Entity
@@ -12,13 +15,16 @@ public class Product implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long productId;
+	@NotEmpty(message = "The product must not be null.")
 	private String productName;
 	private String productCategory;
 	private String productDescription;
+	@Min(value = 0,message = "The product price must not be less than zero.")
 	private double productPrice;
 	private String productCondition;
 	private String productStatus;
-	private int unitInStock;
+@Min(value = 0,message = "The product unit stock must not be less than zero.")
+private int unitInStock;
 	private String productManufacturer;
 	@Transient
 	private MultipartFile productImage;

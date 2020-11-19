@@ -23,7 +23,6 @@
                          style="width:100% ;height:300px ">
                 </div>
                 <div class="col-lg-5">
-                    <h3><img src="#" alt="image"></h3>
                     <p>${product.productName}</p>
                     <p>${product.productCategory}</p>
                     <p>${product.productCondition}</p>
