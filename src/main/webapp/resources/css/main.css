@@ -13,3 +13,11 @@ table td{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+.loginbox{
+   text-align: center;
+}
+.login-container{
+    width: 40%;
+    margin: auto;
+    margin-top: 100px;
+}
